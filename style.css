@@ -1,0 +1,75 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+main {
+  margin: 20px;
+}
+
+#boards {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 0px;
+}
+
+.column {
+  display: inline-block;
+}
+
+.board-ver {
+  display: block;
+  position: relative;
+  width: 41px;
+  height: 41px;
+  background-color: teal;
+  text-align: center;
+  border: 1px solid black;
+  margin: 1px 1px 1px 1px;
+}
+
+.board-hor {
+  display: inline-block;
+  position: relative;
+  width: 41px;
+  height: 41px;
+  background-color: teal;
+  text-align: center;
+  border: 1px solid black;
+  margin: 1px 1px 1px 1px;
+}
+
+
+.board-ver span {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 10px;
+  width: 15px;
+  height: 15px;
+  background-color: gold;
+  margin-top: 2px;
+  margin-bottom: 1px;
+}
+
+#kosong {
+  background-color: white;
+  display: block;
+  position: relative;
+  width: 41px;
+  height: 41px;
+  text-align: center;
+  border: 1px solid black;
+  margin: 1px 1px 1px 1px;
+}
+
+#kosong span {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 10px;
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  margin-top: 2px;
+  margin-bottom: 1px;
+  color: white;
+}

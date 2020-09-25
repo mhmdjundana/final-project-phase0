@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLIDE PUZZLE</title>
+  <link rel="stylesheet" href="./style.css" type="text/css">
+</head>
+<body>
+  <header>
+    <h1>SLIDE PUZZLE</h1>
+  </header>
+  <div id="initialize">
+    <form>
+      <label for="input-grid">Choose Grid:</label>
+      <input type="number" min="3" max="10" id="input-grid" name="input-grid" onchange="getGrid(value)">
+    </form>
+  </div>
+  <main id="">
+    <div id="boards">
+      <!-- <div class="column">
+        <div class="board-ver"><span> 1 </span></div>
+        <div class="board-ver"><span> 2 </span></div>
+        <div class="board-ver"><span> 3 </span></div>
+        <div class="board-ver"><span> 4 </span></div>
+      </div> -->
+    </div>
+    <div id="qwe"></div>
+  </main>
+  <script type="text/javascript"">
+    // let board = '<div class="column"><div class="board-ver"><span> 1 </span></div><div class="board-ver"><span> 2 </span></div><div class="board-ver"><span> 3 </span></div><div class="board-ver"><span> 4 </span></div></div>'
+    // document.getElementById("boards").innerHTML += board + board
+    // create array of number
+    let grid1 = 0
+    function getGrid(val) {
+      grid1 = val
+    }
+
+    // getGrid()
+
+    let grid = (document.getElementById('input-grid').value || 3)
+    let arrOfNum = []
+    for (let i = 1; i < grid * grid; i++) {
+      arrOfNum.push(i)
+    }
+    arrOfNum.push('kosong')
+    // create random arr of num
+    let random = []
+    for (let i = arrOfNum.length; i > 0; i--) {
+      let rNum = Math.floor(Math.random() * i)
+      random.push(...arrOfNum.splice(rNum, 1))
+    }
+    // create object 
+    let objOfboard = {}
+    for (let i = 1, nomer = 1; i <= grid; i++) {
+      const objOfKotak = {}
+      let buka = 'buka'
+      objOfKotak[buka] = `<div class="column" id="col${i}">`
+      objOfKotak.arrKotak = []
+      for (let j = 0; j < grid ; j++) {
+        let n = random.shift()
+        if (n === 'kosong') {
+          objOfKotak.arrKotak.push(`<div class="board-ver" id="kosong"><span> k </span></div>`)
+          nomer++
+          continue;
+        }
+        objOfKotak.arrKotak.push(`<div class="board-ver" id="kotak${n}"><span> ${n} </span></div>`)
+        nomer++
+      }
+      let tutup = 'tutup'
+      objOfKotak[tutup] = '</div>'
+      let ver = 'ver' + i
+      objOfboard[ver] = objOfKotak
+    }
+    
+    // let a = document.getElementsByClassName("board-ver")
+
+    function renderKotak() {
+      let board = ''
+      for (const key in objOfboard) {
+        const element = objOfboard[key];
+        board += element.buka
+        for (let i = 0; i < element.arrKotak.length; i++) {
+          const el = element.arrKotak[i];
+          board += el
+        }
+        board += element.tutup
+      }
+      document.getElementById("boards").innerHTML = board
+    }
+    
+    renderKotak()
+
+    function switchKotak(id) {
+      for (let i = 0; i < objOfboard.length; i++) {
+        const element = objOfboard[i];
+        for (let j = 0; j < element.length; j++) {
+          const kot = element[j];
+          
+          if (kot.indexOf(id) ) {
+            
+          }
+        }  
+      }
+    }
+  </script>
+</body>
+</html>
